@@ -1,0 +1,123 @@
+:root {
+  --as-title-color: #111111;
+  --as-input-bg: #ffffff;
+  --as-input-border-color: #dddddd;
+  --as-input-border-width: 1px;
+}
+
+#as-auth-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--as-overlay-opacity, 0.55));
+  padding: 24px;
+  z-index: 999999;
+}
+
+#as-auth-box {
+  position: relative;
+  margin: 7vh auto 0;
+  width: min(var(--as-modal-max-width, 420px), 92vw);
+  background: var(--as-bg, #fff);
+  color: var(--as-text, #111);
+  padding: var(--as-modal-padding, 18px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border-radius: var(--as-modal-radius, 14px);
+  box-sizing: border-box;
+}
+
+#as-auth-box h3 {
+  margin: 10px 0 12px;
+  color: var(--as-title-color);
+}
+
+#as-auth-box input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--as-input-bg);
+  border: var(--as-input-border-width) solid var(--as-input-border-color);
+  border-radius: var(--as-modal-radius, 14px);
+  box-sizing: border-box;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+#as-auth-box input:focus {
+  outline: none;
+  border-color: var(--as-accent, #111);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+#as-auth-box button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 0;
+  cursor: pointer;
+  border-radius: var(--as-modal-radius, 14px);
+}
+
+#as-auth-box textarea,
+#as-auth-box select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mensajes */
+#as-auth-msg {
+  border-radius: var(--as-modal-radius, 14px);
+  background: #fafafa;
+  color: var(--as-text, #111);
+}
+
+#as-auth-box label.acepto-privacidad  {
+  display: flex;
+  gap: 8px;
+}
+
+#as-auth-box label.acepto-privacidad input {
+  width: auto;
+}
+
+/* Botón cerrar */
+#as-close-modal {
+  background: #eee;
+  color: var(--as-text, #111);
+}
+
+/* Enlaces dentro del modal */
+#as-auth-box a {
+  color: var(--as-accent, #111);
+}
+#as-auth-box a:hover {
+  opacity: 0.85;
+}
+
+#as-forgot-form .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+/* Botón primario (por defecto: el submit del formulario) */
+#as-auth-box form button[type="submit"] {
+  background: var(--as-accent, #111);
+  color: #fff;
+}
+
+/* Botón secundario (cerrar/cancelar) */
+#as-close-modal,
+#as-cancel-forgot,
+#as-auth-box button[type="button"] {
+  background: #eee;
+  color: var(--as-text, #111);
+}
+
+/*******************************
+ ******** MEDIA QUERIES ********
+ *******************************/
+@media (max-width: 480px) {
+  #as-forgot-form .grid {
+    grid-template-columns: 1fr;
+  }
+}
