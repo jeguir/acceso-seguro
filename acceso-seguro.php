@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Acceso Seguro – Control de acceso y registro avanzado
  * Description: Sistema avanzado de acceso y registro para WordPress y WooCommerce, con protección antispam basada en heurísticas reales. Compatible con áreas privadas y contenidos premium.
- * Version: 0.1.1
+ * Version: 1.0.0
  * Author: Jesús Guirao
  * Author URI: https://jesusguirao.com/
  * Text Domain: acceso-seguro
