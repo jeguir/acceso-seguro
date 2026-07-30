@@ -32,18 +32,6 @@ final class UsernameSignal {
 
 
 
-		// En registro AJAX el "username" suele ser candidato derivado del email y no es fiable.
-
-		// Para evitar falsos positivos, no aplicamos score de username en register.
-
-		if ($ctx->action === 'register') {
-
-			return ['deny'=>false,'reason_code'=>'','points'=>0,'hits'=>[],'signals'=>$signals];
-
-		}
-
-
-
 		$points = 0;
 
 
