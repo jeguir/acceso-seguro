@@ -64,8 +64,6 @@ final class Options {
 
 		$existing = self::getAll();
 
-		if (!empty($existing)) return;
-
 
 
 		$defaults = [
@@ -230,8 +228,29 @@ final class Options {
 
 
 
-		self::update($defaults);
+		$merged = self::mergeDefaults($defaults, $existing);
 
+		if ($merged !== $existing) {
+			self::update($merged);
+		}
+
+	}
+
+	private static function mergeDefaults(array $defaults, array $current): array
+	{
+		foreach ($defaults as $key => $value) {
+
+			if (!array_key_exists($key, $current)) {
+				$current[$key] = $value;
+				continue;
+			}
+
+			if (is_array($value) && is_array($current[$key])) {
+				$current[$key] = self::mergeDefaults($value, $current[$key]);
+			}
+		}
+
+		return $current;
 	}
 
 }
