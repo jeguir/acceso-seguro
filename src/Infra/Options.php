@@ -60,7 +60,7 @@ final class Options {
 
 
 
-	public static function syncDefaults(): void {
+	public static function setDefaultsIfEmpty(): void {
 
 		$existing = self::getAll();
 

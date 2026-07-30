@@ -408,7 +408,7 @@ final class SettingsPage {
 
 		if (empty($opts)) {
 
-			Options::syncDefaults();
+			Options::setDefaultsIfEmpty();
 
 			$opts = Options::getAll();
 
