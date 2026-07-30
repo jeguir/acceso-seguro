@@ -10,12 +10,13 @@ if ($Contenido -match "Version:\s*([0-9]+\.[0-9]+\.[0-9]+)") {
     exit 1
 }
 
-$Dist = "dist"
-$Zip = "$Dist\$Nombre-$Version.zip"
+$Release = "release"
 
-if (!(Test-Path $Dist)) {
-    New-Item -ItemType Directory -Path $Dist | Out-Null
+if (!(Test-Path $Release)) {
+    New-Item -ItemType Directory -Path $Release | Out-Null
 }
+
+$Zip = "$Release\$Nombre-v$Version.zip"
 
 if (Test-Path $Zip) {
     Remove-Item $Zip
@@ -27,4 +28,9 @@ git archive `
     --prefix="$Nombre/" `
     HEAD
 
-Write-Host "ZIP creado: $Zip"
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "No se ha podido crear el ZIP."
+    exit 1
+}
+
+Write-Host "ZIP creado correctamente: $Zip"
