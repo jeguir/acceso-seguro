@@ -22,17 +22,11 @@ if (Test-Path $Zip) {
     Remove-Item $Zip
 }
 
-$Treeish = git stash create
-
-if ([string]::IsNullOrWhiteSpace($Treeish)) {
-    $Treeish = "HEAD"
-}
-
 git archive `
     --format=zip `
     --output=$Zip `
     --prefix="$Nombre/" `
-    $Treeish
+    HEAD
 
 if ($LASTEXITCODE -ne 0) {
     Write-Error "No se ha podido crear el ZIP."
